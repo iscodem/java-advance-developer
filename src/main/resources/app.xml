@@ -1,0 +1,44 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<beans xmlns="http://www.springframework.org/schema/beans"
+       xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+       xsi:schemaLocation="http://www.springframework.org/schema/beans 
+       http://www.springframework.org/schema/beans/spring-beans-3.2.xsd">
+    
+    <bean id="musico" class="pe.gob.sunat.model.Musico"/>
+        
+    <bean id="instrumento" class="pe.gob.sunat.model.Instrumento">
+        <constructor-arg value="Otro" />
+    </bean>
+        
+    <bean id="miguel" class="pe.gob.sunat.model.Musico">
+        <constructor-arg value="15" />
+    </bean>
+    
+    <bean id="pedro" class="pe.gob.sunat.model.Musico">
+        <constructor-arg value="15" />
+        <constructor-arg ref="instrumento" />
+    </bean>
+    
+    <bean id="guitarra" class="pe.gob.sunat.model.Guitarra" primary="true">
+        <constructor-arg value="Guitarra" />
+    </bean>
+    
+    <bean id="piano" class="pe.gob.sunat.model.Piano">
+        <constructor-arg value="Piano" />
+    </bean>
+    
+    <bean id="charly" class="pe.gob.sunat.model.Musico">
+        <property name="instrumentos">
+            <list>
+                <ref bean="guitarra"/>
+                <ref bean="piano"/>    
+                <ref bean="instrumento"/>
+            </list>
+        </property>
+    </bean>
+    
+   <bean id="cerati" class="pe.gob.sunat.model.Musico" autowire="byType"></bean>
+   
+   <bean id="noel" class="pe.gob.sunat.model.Musico" autowire="constructor"></bean>
+   
+</beans>
